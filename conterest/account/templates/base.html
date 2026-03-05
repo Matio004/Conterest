@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mój Pinterest{% endblock %}</title>
+
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li>
+                Conterest
+            </li>
+            <li>
+                <a href="{% url 'login' %}">Discover</a>
+            </li>
+            {% if request.user.is_authenticated %}
+            {% endif %}
+        </ul>
+
+        <ul class="user">
+            {% if request.user.is_authenticated %}
+                <li>Witaj, {{ request.user.first_name }}</li>
+                <li>
+                    <form action="{% url "logout" %}" method="post">
+                        <input type="submit" value="Logout">
+                        {% csrf_token %}
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{% url "login" %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
