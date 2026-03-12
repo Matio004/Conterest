@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Configs{% endblock %}
+
+{% block content %}
+    <div class="grid">
+        {% for config in configs %}
+            <a href="{{ config.get_absolute_url }}">
+        <div class="config">
+            <img src="{{ config.image.url }}">
+        </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

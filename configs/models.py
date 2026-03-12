@@ -22,8 +22,9 @@ class Config(models.Model):
                              related_name='configs_created',
                              on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200, blank=True)
+    slug = models.SlugField(max_length=200, unique_for_date='created')
     url = models.URLField()
+    image = models.ImageField(upload_to='images/%Y/%m/%d')
 
     description = models.TextField(blank=True)
 
@@ -38,25 +39,29 @@ class Config(models.Model):
 
     class Meta:
         ordering = ('-created',)
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'slug'], name='unique_slug_per_user')
+        ]
 
     def __str__(self):
         return self.title
 
+    objects = models.Manager()
     published = PublishedManager()
     tags = TaggableManager()
 
     def get_absolute_url(self):  # todo
-        pass
+        return reverse('posts:post_detail', args=[self.user.username,
+                                                  self.created.year,
+                                                  self.created.strftime('%m'),
+                                                  self.created.strftime('%d'),
+                                                  self.slug])
 
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
-            super().save(*args, **kwargs)
 
 
-class Image(models.Model):
-    config = models.ForeignKey(Config, on_delete=models.CASCADE, related_name='config_images')
-    image = models.ImageField(upload_to='images/%Y/%m/%d')
+# class Image(models.Model):
+#     config = models.ForeignKey(Config, on_delete=models.CASCADE, related_name='config_images')
+#     image = models.ImageField(upload_to='images/%Y/%m/%d')
 
 
 class Comment(models.Model):
