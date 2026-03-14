@@ -51,11 +51,12 @@ class Config(models.Model):
     tags = TaggableManager()
 
     def get_absolute_url(self):  # todo
-        return reverse('posts:post_detail', args=[self.user.username,
-                                                  self.created.year,
-                                                  self.created.strftime('%m'),
-                                                  self.created.strftime('%d'),
-                                                  self.slug])
+        return reverse('posts:post_detail', args=[self.pk])
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
 
 

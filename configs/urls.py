@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import ConfigListView, ConfigDetailView
+from .views import ConfigListView, ConfigDetailView, config_create
 
 app_name = 'posts'
 
 urlpatterns = [
     path('', ConfigListView.as_view(), name='posts'),
-    path('post/<str:user>/<int:year>/<int:month>/<int:day>/<slug:slug>/', ConfigDetailView.as_view(), name='post_detail'),
+    path('post/<int:pk>/', ConfigDetailView.as_view(), name='post_detail'),
+    path('create/', config_create, name='create'),
 ]

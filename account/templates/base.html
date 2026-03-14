@@ -17,20 +17,30 @@
     <nav>
         <ul>
             <li>
-                <img src="{% static "svg/logo.svg" %}" id="logo">
+                <img src="{% static "svg/logo.svg" %}" id="logo" alt="🟣conterest_">
             </li>
             <li>
-                <a href="{% url 'posts:posts' %}">Discover</a>
+                <a href="{% url 'posts:posts' %}" class="nav-link">Discover</a>
             </li>
 
-            <li>
-
-            </li>
+            {% if request.user.is_authenticated %}
+                <li>
+                    <a href="{% url 'posts:create' %}" class="nav-link">Create</a>
+                </li>
+            {% endif %}
         </ul>
 
         <ul class="user">
             {% if request.user.is_authenticated %}
-                <li>Witaj, {{ request.user.first_name }}</li>
+                <li>
+                    Hello, {{ request.user.first_name }}
+                </li>
+                <li>
+                    <a href="{% url "dashboard" %}" style="">
+                        <img src="{{ request.user.profile.photo.url }}" class="photo" alt="user photo">
+                    </a>
+                </li>
+
                 <li>
                     <form action="{% url "logout" %}" method="post">
                         <input type="submit" value="Logout">

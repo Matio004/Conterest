@@ -54,7 +54,7 @@ header nav li {
     line-height: 16px;
 }
 
-header nav a {
+header nav .nav-link {
     color: #000000;
     text-decoration: none;
     display: block;
@@ -63,11 +63,11 @@ header nav a {
     transition: background-color 0.3s;
 }
 
-header nav a:visited {
+header nav .nav-link:visited {
     color: #000000;
 }
 
-header nav a:hover {
+header nav .nav-link:hover {
     //color: #C9F0DD;
     background-color: #E3E3E3;
     transition: background-color 0.3s;
@@ -119,5 +119,12 @@ header .user .register:hover {
 
 header .logo {
     float: left;
+}
+
+header .user .photo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    transition: width 0.3s, height 0.3s;
 }
 

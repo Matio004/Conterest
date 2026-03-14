@@ -19,7 +19,7 @@ input[type=submit]:hover {
     cursor: pointer;
 }
 
-input {
+input, textarea, select {
     padding: 10pt;
     background-color: #ffffff;
     border: 1px solid #000000;
@@ -29,10 +29,20 @@ input {
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-input:focus, input:hover {
+input:focus, input:hover,
+textarea:focus, textarea:hover,
+select:focus, select:hover {
     outline: none;
     border-color: #8000ff;
     box-shadow: 0 0 5px rgba(108, 0, 217, 0.5);
     transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+textarea {
+    resize: none;
+}
+
+label {
+    display: block;
 }
 
