@@ -1,16 +1,30 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.shortcuts import render, redirect
 
+from configs.models import Config
 from .models import Profile
 from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm
 
 # Create your views here.
 @login_required
 def dashboard(request):
+    object_list = Config.objects.filter(user=request.user)
+
+    paginator = Paginator(object_list, 20)
+    page = request.GET.get('page')
+    try:
+        configs = paginator.page(page)
+    except PageNotAnInteger:
+        configs = paginator.page(1)
+    except EmptyPage:
+        configs = paginator.page(paginator.num_pages)
     return render(request,
                   'account/dashboard.html',
-                  {'section': 'dashboard'})
+                  {'section': 'dashboard',
+                   'page': page,
+                   'configs': configs,})
 
 
 def register(request):
@@ -48,6 +62,7 @@ def edit(request):
             user_form.save()
             profile_form.save()
             messages.success(request, 'Uaktualnienie profilu zakończyło się sukcesem.')
+            return redirect('dashboard')
         else:
             messages.error(request, 'Wystąpił błąd podczas uaktualniania profilu')
     else:

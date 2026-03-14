@@ -1,5 +1,22 @@
 {% extends 'base.html' %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
-
+    <div class="profile">
+        <img src="{{ request.user.profile.photo.url }}" class="photo" alt="user photo">
+        <p>{{ request.user.first_name }}</p>
+        <p>{{ request.user.username }}</p>
+        <p>
+            {{ request.user.profile.description }}
+        </p>
+        <a href="{% url 'edit' %}" class="button-link">Edit profile</a>
+    </div>
+    <div class="grid">
+        {% for config in configs %}
+            <a href="{{ config.get_absolute_url }}">
+        <div class="config">
+            <img src="{{ config.image.url }}" alt="{{ config.title }}">
+        </div>
+            </a>
+        {% endfor %}
+    </div>
 {% endblock %}

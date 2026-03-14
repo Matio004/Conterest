@@ -128,3 +128,35 @@ header .user .photo {
     transition: width 0.3s, height 0.3s;
 }
 
+.profile {
+    float: left;
+    margin-right: 20pt;
+    width: 25%;
+
+    text-align: center
+}
+
+.profile * {
+
+}
+
+.profile .photo {
+    border-radius: 50%;
+    width: 288px;
+    height: 288px;
+}
+
+.profile .button-link {
+    color: #FBFEF9;
+    text-decoration: none;
+    display: block;
+    padding: 10pt;
+    border-radius: 14px;
+    background-color: #8000ff;
+    transition: background-color 0.3s;
+}
+
+.profile .button-link:hover {
+    background-color: #6C00D9;
+    transition: background-color 0.3s;
+}

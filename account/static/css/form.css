@@ -42,7 +42,7 @@ textarea {
     resize: none;
 }
 
-label {
+input:not([type="checkbox"]), textarea, select {
     display: block;
 }
 

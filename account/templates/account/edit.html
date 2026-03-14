@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %}Edit profile{% endblock %}
+
+{% block content %}
+    <h1>Edit profile</h1>
+    <form action="." method="post" enctype="multipart/form-data">
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        {% csrf_token %}
+        <p>
+            <input type="submit" value="Save">
+        </p>
+    </form>
+{% endblock %}
