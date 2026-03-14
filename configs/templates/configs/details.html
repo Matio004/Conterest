@@ -7,7 +7,5 @@
 {% block content %}
     <h1>{{ config.title }}</h1>
     <img src="{{ config.image.url }}" alt="{{ config.title }}">
-    <p>
-        {{ config.description | markdown }}
-    </p>
+    {{ config.description|markdown }}
 {% endblock %}

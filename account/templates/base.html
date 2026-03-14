@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Mój Pinterest{% endblock %}</title>
 
+    <link rel="icon" href="{% static "svg/favicon.svg" %}">
+
     <link href="{% static "css/base.css" %}" rel="stylesheet">
+    <link href="{% static "css/form.css" %}" rel="stylesheet">
     <link href="{% static "css/list.css" %}" rel="stylesheet">
 </head>
 <body>
@@ -14,13 +17,15 @@
     <nav>
         <ul>
             <li>
-                Conterest
+                <img src="{% static "svg/logo.svg" %}" id="logo">
             </li>
             <li>
                 <a href="{% url 'posts:posts' %}">Discover</a>
             </li>
-            {% if request.user.is_authenticated %}
-            {% endif %}
+
+            <li>
+
+            </li>
         </ul>
 
         <ul class="user">
@@ -33,7 +38,8 @@
                     </form>
                 </li>
             {% else %}
-                <li><a href="{% url "login" %}">Login</a></li>
+                <li><a href="{% url "login" %}" class="login">Login</a></li>
+                <li><a href="{% url "register" %}" class="register">Register</a></li>
             {% endif %}
         </ul>
     </nav>

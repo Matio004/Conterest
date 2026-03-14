@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="5.3440008mm"
+   height="5.3439975mm"
+   viewBox="0 0 5.3440008 5.3439975"
+   version="1.1"
+   id="svg1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     showguides="true"
+     inkscape:export-bgcolor="#ffffff00">
+    <inkscape:grid
+       id="grid6"
+       units="mm"
+       originx="-51.858334"
+       originy="-71.437492"
+       spacingx="0.99999998"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+    <sodipodi:guide
+       position="5.9124386,26.59985"
+       orientation="0,-1"
+       id="guide7"
+       inkscape:locked="false" />
+    <inkscape:page
+       x="0"
+       y="0"
+       width="5.3440008"
+       height="5.3439975"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Warstwa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-51.858332,-71.437502)">
+    <g
+       id="g14">
+      <rect
+         style="fill:#7cff00;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-dasharray:none;stroke-opacity:1"
+         id="rect8-1"
+         width="5.3439999"
+         height="5.3439999"
+         x="51.858334"
+         y="71.4375" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono';writing-mode:lr-tb;direction:ltr;fill:#8000ff;fill-opacity:1;stroke:none;stroke-width:0.264999;stroke-dasharray:none;stroke-opacity:1"
+         x="52.822887"
+         y="76.124565"
+         id="text8-0"><tspan
+           sodipodi:role="line"
+           id="tspan8-3"
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:5.64444px;font-family:'Noto Sans Mono';-inkscape-font-specification:'Noto Sans Mono Heavy';fill:#8000ff;fill-opacity:1;stroke:none;stroke-width:0.265;stroke-opacity:1"
+           x="52.822887"
+           y="76.124565">C</tspan></text>
+    </g>
+  </g>
+</svg>
