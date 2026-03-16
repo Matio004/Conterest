@@ -6,6 +6,8 @@
 
 {% block content %}
     <h1>{{ config.title }}</h1>
+    <p>{{ config.publish }}</p>
     <img src="{{ config.image.url }}" alt="{{ config.title }}">
+    <p><a href="{{ config.url }}" target="_blank">Github</a></p>
     {{ config.description|markdown }}
 {% endblock %}

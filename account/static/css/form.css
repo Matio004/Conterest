@@ -66,3 +66,9 @@ input[type=file]::file-selector-button:active {
     transition: background-color 0.3s;
 }
 
+.form-wrapper {
+    width: max-content;
+
+    margin: auto;
+}
+
