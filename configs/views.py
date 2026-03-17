@@ -9,7 +9,7 @@ from .forms import ConfigForm
 
 
 # Create your views here.
-class ConfigListView(ListView):
+class ConfigListView(ListView):  # todo infinity scroll
     queryset = Config.published.all()
     context_object_name = 'configs'
     template_name = 'configs/list.html'

@@ -11,4 +11,5 @@ Conterest is an application that allows users to save, share, and restore their 
 - [ ] Implement API in djangorestframework.
 - [ ] Display config thumbnails in pretty format.
 - [ ] Make appeling UI.
+- [ ] Add email authentication.
 - [ ] ...

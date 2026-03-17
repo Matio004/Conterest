@@ -12,7 +12,7 @@ class PublishedManager(models.Manager):
 
 
 # Create your models here.
-class Config(models.Model):
+class Config(models.Model):  # todo thumbnails
     STATUS_CHOICES = (
         ('private', 'Private'),
         ('published', 'Published'),
@@ -50,8 +50,8 @@ class Config(models.Model):
     published = PublishedManager()
     tags = TaggableManager()
 
-    def get_absolute_url(self):  # todo
-        return reverse('posts:post_detail', args=[self.pk])
+    def get_absolute_url(self):
+        return reverse('posts:post_detail', args=[self.id, self.slug])
 
     def save(self, *args, **kwargs):
         if not self.slug:
