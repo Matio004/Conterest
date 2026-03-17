@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'taggit',
     'django.contrib.postgres',
+    'easy_thumbnails',
 ]
 
 MIDDLEWARE = [

@@ -1,15 +1,41 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Configs{% endblock %}
 
 {% block content %}
-    <div class="grid">
-        {% for config in configs %}
-            <a href="{{ config.get_absolute_url }}">
-        <div class="config">
-            <img src="{{ config.image.url }}" alt="{{ config.title }}">
-        </div>
-            </a>
-        {% endfor %}
+    <div class="grid" id="config-list">
+        {% include 'configs/config_list.html' %}
     </div>
+{% endblock %}
+
+{% block domready %}
+    let page = 1;
+    let emptyPage = false;
+    let blockRequest = false;
+
+    window.addEventListener('scroll', ev => {
+    const margin = document.body.clientHeight - window.innerHeight - 200;
+
+    if (window.pageYOffset > margin && !emptyPage && !blockRequest) {
+        blockRequest = true;
+        page += 1;
+
+        fetch('?posts_only=1&page=' + page)
+            .then(response => response.text())
+            .then(html => {
+                if (html === '') {
+                    emptyPage = true;
+                }
+                else {
+                    const postList = document.getElementById('config-list');
+                    postList.insertAdjacentHTML("beforeend", html);
+                    blockRequest = false;
+                }
+            })
+        }
+    });
+
+const scrollEvent = new Event('scroll');
+window.dispatchEvent(scrollEvent);
 {% endblock %}

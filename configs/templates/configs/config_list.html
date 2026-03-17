@@ -1,0 +1,10 @@
+{% load thumbnail %}
+
+{% for config in configs %}
+    <a href="{{ config.get_absolute_url }}">
+        <div class="config">
+            {% thumbnail config.image 0x450 quality=100 crop='smart' as im %}
+            <img src="{{ im.url }}" alt="{{ config.title }}">
+        </div>
+    </a>
+{% endfor %}

@@ -1,21 +1,15 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db import IntegrityError
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView
 
 from .models import Config
 from .forms import ConfigForm
 
 
 # Create your views here.
-class ConfigListView(ListView):  # todo infinity scroll
-    queryset = Config.published.all()
-    context_object_name = 'configs'
-    template_name = 'configs/list.html'
-    paginate_by = 20
-
-
 class ConfigDetailView(DetailView):
     model = Config
     context_object_name = 'config'
@@ -44,3 +38,26 @@ def config_create(request):
                   {
                       'form': form
                   })
+
+def config_list(request):
+    posts = Config.published.all()
+    paginator = Paginator(posts, 20)
+
+    page = request.GET.get('page')
+    posts_only = request.GET.get('posts_only')
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        if posts_only:
+            return HttpResponse('')
+        posts = paginator.page(paginator.num_pages)
+    if posts_only:
+        return render(request,
+                      'configs/config_list.html',
+                      {'configs': posts})
+    return render(request,
+                  'configs/list.html',
+                  {'configs': posts})
