@@ -51,7 +51,7 @@ class Config(models.Model):  # todo thumbnails
     tags = TaggableManager()
 
     def get_absolute_url(self):
-        return reverse('posts:post_detail', args=[self.id, self.slug])
+        return reverse('posts:post_detail', args=[self.user, self.slug])
 
     def save(self, *args, **kwargs):
         if not self.slug:

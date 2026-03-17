@@ -2,18 +2,19 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db import IntegrityError
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Config
 from .forms import ConfigForm
 
 
 # Create your views here.
-class ConfigDetailView(DetailView):
-    model = Config
-    context_object_name = 'config'
-    template_name = 'configs/details.html'
+def config_detail(request, user, config):
+    config = get_object_or_404(Config.published, user__username=user, slug=config)
+    return render(request,
+                  'configs/details.html',
+                  {'config': config,})
+
 
 
 @login_required
